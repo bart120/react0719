@@ -18,7 +18,11 @@ export default class Header extends React.Component {
                         <Nav.Link><Link to="/rooms/create">Ajouter</Link></Nav.Link>
 
                     </Nav>
-
+                </Navbar.Collapse>
+                <Navbar.Collapse className="justify-content-end">
+                    <Nav.Link><Link to="/login">Se connecter</Link></Nav.Link>
+                    <Navbar.Text>
+                    </Navbar.Text>
                 </Navbar.Collapse>
             </Navbar >
         );
