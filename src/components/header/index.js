@@ -13,14 +13,14 @@ export default class Header extends React.Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link><Link to="/">Accueil</Link></Nav.Link>
-                        <Nav.Link><Link to="/rooms">Salles</Link></Nav.Link>
-                        <Nav.Link><Link to="/rooms/create">Ajouter</Link></Nav.Link>
+                        <Link to="/">Accueil</Link>
+                        <Link to="/rooms">Salles</Link>
+                        <Link to="/rooms/create">Ajouter</Link>
 
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Collapse className="justify-content-end">
-                    <Nav.Link><Link to="/login">Se connecter</Link></Nav.Link>
+                    <Link to="/login">Se connecter</Link>
                     <Navbar.Text>
                     </Navbar.Text>
                 </Navbar.Collapse>
