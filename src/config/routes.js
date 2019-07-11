@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { withRouter } from 'react-router';
 import Home from '../pages/home';
 import CreateRoom from '../pages/rooms/create';
 import ListRoom from '../pages/rooms/list';
 import Login from '../pages/login';
+import PrivateRoute from '../utils/private-route';
 
 
 class Routes extends React.Component {
@@ -16,8 +17,9 @@ class Routes extends React.Component {
             <>
                 <Route path='/' exact component={Home} />
 
+                <PrivateRoute path='/rooms/create' component={CreateRoom} />
 
-                <Route path='/rooms/create' render={() => this.props.isConnectedProp === true ? (<CreateRoom />) : (<Redirect to={{ pathname: '/login' }} />)} />
+
 
 
                 <Route path='/rooms' exact component={ListRoom} />
@@ -33,4 +35,4 @@ const mapStateToProps = stateStore => ({
 });
 
 
-export default connect(mapStateToProps)(Routes)
+export default connect(mapStateToProps)(withRouter(Routes))

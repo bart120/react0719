@@ -29,7 +29,7 @@ class Login extends React.Component {
 
     onSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+
         // this.setState({ message: 'coucou' });
         if (this.checkValues()) {
             //appel API
@@ -42,7 +42,12 @@ class Login extends React.Component {
             sessionStorage.setItem('USER', JSON.stringify(user));
 
             this.props.actions.login(user);
-            this.props.history.push('/');
+            console.info(this.props.history.action);
+            if (this.props.history.action === 'REPLACE') {
+                this.props.history.push(this.props.history.location.state.from);
+            } else {
+                this.props.history.push('/');
+            }
         }
 
     }
