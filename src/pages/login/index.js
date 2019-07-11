@@ -1,11 +1,14 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { login } from '../../redux/actions/authentication';
 
 import LoginForm from '../../components/login-form';
 
 class Login extends React.Component {
     state = {
-        email: '',
-        password: '',
+        email: 'toto@toto.fr',
+        password: 'Toto007$',
         message: ''
     }
 
@@ -30,8 +33,10 @@ class Login extends React.Component {
         // this.setState({ message: 'coucou' });
         if (this.checkValues()) {
             //appel API
+            this.props.actions.login();
             this.props.history.push('/');
         }
+
     }
 
     onChange = (event) => {
@@ -53,4 +58,12 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        login: bindActionCreators(login, dispatch)
+    }
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

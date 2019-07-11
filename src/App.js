@@ -5,21 +5,36 @@ import './App.css';
 import Footer from './components/footer';
 import Routes from './config/routes';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store'
 
 class App extends React.Component {
+
+  state = {
+    reduxState: store.getState()
+  }
+
+  componentDidMount() {
+    store.subscribe(() => {
+      //console.log(store.getState());
+      this.setState({ reduxState: store.getState() });
+    });
+  }
 
   render() {
     return (
       <Container>
-        <Router>
-          <Header />
+        <Provider store={store}>
+          <Router>
+            <Header />
 
-          <Routes />
+            <Routes />
 
-          <footer>
-            <Footer />
-          </footer>
-        </Router>
+            <footer>
+              <Footer />
+            </footer>
+          </Router>
+        </Provider>
       </Container>
     );
   }

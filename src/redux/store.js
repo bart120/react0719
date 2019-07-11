@@ -1,4 +1,4 @@
-import Redux from 'redux';
+import { createStore } from 'redux';
 import AuthReducer from './reducers/authentication';
 
-export const store = Redux.createStore(AuthReducer);
+export const store = createStore(AuthReducer);

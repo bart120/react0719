@@ -3,14 +3,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
+class Header extends React.Component {
 
-export default class Header extends React.Component {
-
-    state = { isConnected: false };
 
     render() {
+
         return (
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand>Roomy</Navbar.Brand>
@@ -23,7 +23,7 @@ export default class Header extends React.Component {
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Collapse className="justify-content-end">
-                    {this.state.isConnected ? (
+                    {this.props.isConnectedProp ? (
                         <>
                             <Navbar.Text>
                                 Bonjour toto
@@ -43,3 +43,9 @@ export default class Header extends React.Component {
 
 
 }
+
+const mapStateToProps = stateStore => ({
+    isConnectedProp: stateStore.isConnected
+});
+
+export default connect(mapStateToProps)(Header)
