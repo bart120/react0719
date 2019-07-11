@@ -4,10 +4,17 @@ import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { bindActionCreators } from 'redux';
+import { logout } from '../../redux/actions/authentication';
+import { withRouter } from 'react-router';
 
 class Header extends React.Component {
 
+    onLogout = (event) => {
+        this.props.actions.logout();
+        sessionStorage.removeItem('USER');
+        this.props.history.push('/');
+    }
 
     render() {
 
@@ -26,9 +33,9 @@ class Header extends React.Component {
                     {this.props.isConnectedProp ? (
                         <>
                             <Navbar.Text>
-                                Bonjour toto
+                                Bonjour {this.props.user.login}
                             </Navbar.Text>
-                            <Button>Se déconnecter</Button>
+                            <Button onClick={this.onLogout}>Se déconnecter</Button>
                         </>
                     ) : (
                             <Link to="/login">Se connecter</Link>
@@ -45,7 +52,14 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = stateStore => ({
-    isConnectedProp: stateStore.isConnected
+    isConnectedProp: stateStore.isConnected,
+    user: stateStore.user
 });
 
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        logout: bindActionCreators(logout, dispatch)
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))

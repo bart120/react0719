@@ -6,3 +6,8 @@ export const login = payload => ({
     payload
 });
 
+export const logout = payload => ({
+    type: AUTH_LOGOUT,
+    payload
+});
+

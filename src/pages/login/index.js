@@ -33,7 +33,15 @@ class Login extends React.Component {
         // this.setState({ message: 'coucou' });
         if (this.checkValues()) {
             //appel API
-            this.props.actions.login();
+            const user =
+            {
+                login: this.state.email,
+                token: 'SFGDFSGSDHGFSJFHDBFDSGF8DSFG8DSH'
+            };
+
+            sessionStorage.setItem('USER', JSON.stringify(user));
+
+            this.props.actions.login(user);
             this.props.history.push('/');
         }
 
