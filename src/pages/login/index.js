@@ -29,7 +29,8 @@ class Login extends React.Component {
         console.log(this.state);
         // this.setState({ message: 'coucou' });
         if (this.checkValues()) {
-
+            //appel API
+            this.props.history.push('/');
         }
     }
 
