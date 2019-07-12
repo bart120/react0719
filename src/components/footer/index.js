@@ -15,22 +15,22 @@ export default class Footer extends React.Component {
     };
 
     componentDidMount() {
-        console.log('didmount');
+        // console.log('didmount');
         //this.state.title = 'TOP 5';
         this.setState({ title: 'TOP 5' });
     }
 
     componentWillMount() {
-        console.log('wilmount');
+        // console.log('wilmount');
 
     }
 
     componentWillUpdate() {
-        console.log('update');
+        // console.log('update');
     }
 
     render() {
-        console.log('render');
+        // console.log('render');
         return (
             <>
                 <h3>{this.state.title}</h3>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Home from '../pages/home';
@@ -12,7 +12,7 @@ import PrivateRoute from '../utils/private-route';
 class Routes extends React.Component {
 
     render() {
-        console.log(this.props.isConnectedProp);
+        // console.log(this.props.isConnectedProp);
         return (
             <>
                 <Route path='/' exact component={Home} />

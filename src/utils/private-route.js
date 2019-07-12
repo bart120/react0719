@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 /*
@@ -26,8 +25,8 @@ class PrivateRoute extends React.Component {
 
 
     render() {
-        console.warn(this.props.isConnectedProp);
-        console.log(this.props.history);
+        // console.warn(this.props.isConnectedProp);
+        // console.log(this.props.history);
         const { component: Component, ...rest } = this.props;
         return (
             <Route

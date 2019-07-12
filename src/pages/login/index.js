@@ -42,7 +42,7 @@ class Login extends React.Component {
             sessionStorage.setItem('USER', JSON.stringify(user));
 
             this.props.actions.login(user);
-            console.info(this.props.history.action);
+            // console.info(this.props.history.action);
             if (this.props.history.action === 'REPLACE') {
                 this.props.history.push(this.props.history.location.state.from);
             } else {
