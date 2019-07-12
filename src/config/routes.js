@@ -7,6 +7,7 @@ import CreateRoom from '../pages/rooms/create';
 import ListRoom from '../pages/rooms/list';
 import Login from '../pages/login';
 import PrivateRoute from '../utils/private-route';
+import DetailRoom from '../pages/rooms/detail';
 
 
 class Routes extends React.Component {
@@ -16,12 +17,8 @@ class Routes extends React.Component {
         return (
             <>
                 <Route path='/' exact component={Home} />
-
                 <PrivateRoute path='/rooms/create' component={CreateRoom} />
-
-
-
-
+                <Route path='/rooms/:id' exact component={DetailRoom} />
                 <Route path='/rooms' exact component={ListRoom} />
                 <Route path='/login' exact component={Login} />
 

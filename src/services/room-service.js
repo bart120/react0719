@@ -1,4 +1,3 @@
-import axios from 'axios';
 import BaseService from './base-service';
 
 
@@ -15,5 +14,17 @@ export default class RoomService extends BaseService {
         });*/
         return this.get(URL_ROOMS);
 
+    }
+
+    getRoomById(id) {
+        return this.get(`${URL_ROOMS}/${id}`);
+    }
+
+    deleteRoomByd(id) {
+        return this.delete(`${URL_ROOMS}/${id}`);
+    }
+
+    createRoom(obj) {
+        return this.post(URL_ROOMS, obj);
     }
 }

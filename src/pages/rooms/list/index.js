@@ -1,5 +1,6 @@
 import React from 'react';
 import RoomService from '../../../services/room-service';
+import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
@@ -13,12 +14,23 @@ class ListRoom extends React.Component {
     componentDidMount() {
         this.serv.getAll()
             .then(data => {
-                // console.log('then du comp');
-                // console.log(obj);
                 this.setState({ rooms: data });
             })
             .catch(err => alert(err));
+    }
 
+    onDetail(id) {
+        this.props.history.push(`/rooms/${id}`);
+    }
+
+    onDelete(id) {
+        this.serv.deleteRoomByd(id)
+            .then(data => {
+                let array = [...this.state.rooms];
+                array.splice(array.findIndex(item => item.id == id), 1);
+                this.setState({ rooms: array });
+                alert(`La salle ${data.name} a été supprimée.`);
+            });
     }
 
     render() {
@@ -40,7 +52,10 @@ class ListRoom extends React.Component {
                                 <td>{room.name}</td>
                                 <td>{room.price} €</td>
                                 <td>{room.seatCount}</td>
-                                <td><Button>Voir</Button></td>
+                                <td>
+                                    <Button onClick={() => this.onDetail(room.id)}>Voir</Button>
+                                    <Button onClick={() => this.onDelete(room.id)}>Supprimer</Button>
+                                </td>
                             </tr>
                         ))}
 
@@ -51,4 +66,4 @@ class ListRoom extends React.Component {
     }
 }
 
-export default ListRoom;
+export default withRouter(ListRoom);
