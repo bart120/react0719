@@ -19,7 +19,6 @@ class CreateRoom extends React.Component {
 
 
     onChange = (event) => {
-
         this.setState({ room: Object.assign(this.state.room, { [event.target.name]: event.target.value }) });
     }
 

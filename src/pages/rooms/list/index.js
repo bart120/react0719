@@ -3,6 +3,7 @@ import RoomService from '../../../services/room-service';
 import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import Loading from '../../../components/loading';
 
 
 class ListRoom extends React.Component {
@@ -61,7 +62,7 @@ class ListRoom extends React.Component {
 
                     </tbody>
                 </Table>
-            ) : (<></>)
+            ) : (<Loading />)
         );
     }
 }
